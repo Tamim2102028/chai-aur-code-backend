@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
 // Define a schema
 const schemaName = new mongoose.Schema(
