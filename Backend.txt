@@ -1,5 +1,7 @@
 npm init / npm init -y
 
+npm install mongoose
+
 npm install express / npm install express --save
 // index.js
           const express = require('express')
