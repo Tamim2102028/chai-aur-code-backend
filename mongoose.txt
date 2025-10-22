@@ -1,0 +1,5 @@
+mongoose-aggregate-paginate-v2
+> npm install mongoose-aggregate-paginate-v2
+> npm i mongoose-aggregate-paginate-v2@1.0.42
+          import mongoosePaginate from "mongoose-aggregate-paginate-v2";
+          videoSchema.plugin(mongoosePaginate);

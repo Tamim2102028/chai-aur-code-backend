@@ -1,8 +1,8 @@
-npm init / npm init -y
+> npm init / npm init -y
 
-npm install mongoose
+> npm install mongoose
 
-npm install express / npm install express --save
+> npm install express / npm install express --save
 // index.js
           const express = require('express')
           const app = express()
@@ -16,12 +16,36 @@ npm install express / npm install express --save
             console.log(`Example app listening on port ${port}`)
           })
 
-npm install dotenv
+> npm install dotenv
 // index.js
           require('dotenv').config();
           const dbUrl = process.env.DATABASE_URL;
           const port = process.env.PORT || 3000;
 
           res.json()
-          
 
+
+> npm i cors
+          app.use(
+            cors({
+              origin: process.env.CORS_ORIGIN,
+              credentials: true,
+            })
+          );
+
+> npm i cookie-parser
+          app.use(cookieParser());
+
+> npm i mongoose-aggregate-paginate-v2@1.0.42
+// video.model.js
+          import mongoosePaginate from "mongoose-aggregate-paginate-v2";
+          videoSchema.plugin(mongoosePaginate);
+
+> npm i bcrypt
+// user.model.js
+          import bcrypt from "bcrypt";
+
+> npm i jsonwebtoken
+// user.model.js
+          import jwt from "jsonwebtoken";
+          
