@@ -63,10 +63,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// method to compare given password with database hash
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
+// method to generate JWTs
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
@@ -81,7 +83,7 @@ userSchema.methods.generateAccessToken = function () {
     }
   );
 };
-
+// method to generate refresh token
 userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
     {
