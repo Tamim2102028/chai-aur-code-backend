@@ -48,4 +48,12 @@
 > npm i jsonwebtoken
 // user.model.js
           import jwt from "jsonwebtoken";
+
+
+--- File uplode ---
+
+> npm i cloudinary
+
+ 
+> npm i multer
           
