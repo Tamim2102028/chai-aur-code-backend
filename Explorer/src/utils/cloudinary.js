@@ -13,14 +13,18 @@ const uploadCloudinary = async (localFilePath) => {
       return null;
     }
     // Upload the file to Cloudinary
-    
-  } catch (error) {}
+    const result = await cloudinary.uploader.upload(localFilePath, {
+      resource_type: "auto",
+    });
+    // file has been successfully uploaded, we can remove it from the local disk
+    console.log(`File is uploaded on cloudinary : ${result.url}`);
+    return result;
+  } catch (error) {
+    // If an error occurs, we can remove the file from the local disk
+    fs.unlinkSync(localFilePath);
+    console.error("Error uploading file to Cloudinary:", error);
+    throw error;
+  }
 };
 
-cloudinary.v2.uploader.upload(
-  "path/to/image.jpg",
-  { public_id: "sample_id" },
-  (error, result) => {
-    console.log(result);
-  }
-);
+export { uploadCloudinary };
