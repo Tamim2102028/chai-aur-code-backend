@@ -57,10 +57,11 @@ userSchema.pre("save", async function (next) {
     // if password is not modified, skip hashing
     return next();
   }
-  this.password = await bcrypt.hash(this.password, 10);
-  // 10 salt rounds
+  this.password = await bcrypt.hash(this.password, 10); // 10 salt rounds
   next();
 });
+
+// --- -- - Helper methods
 
 // method to compare given password with database hash
 userSchema.methods.isPasswordCorrect = async function (password) {
@@ -95,5 +96,6 @@ userSchema.methods.generateRefreshToken = function () {
     }
   );
 };
+
 const User = model("User", userSchema);
 export default User;
