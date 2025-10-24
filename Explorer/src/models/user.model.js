@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { use } from "react";
 
 const userSchema = new Schema(
   {
@@ -83,6 +82,7 @@ userSchema.methods.generateAccessToken = function () {
     }
   );
 };
+
 // method to generate refresh token
 userSchema.methods.generateRefreshToken = function () {
   return jwt.sign(
@@ -95,5 +95,5 @@ userSchema.methods.generateRefreshToken = function () {
     }
   );
 };
-
-export default model("User", userSchema);
+const User = model("User", userSchema);
+export default User;
