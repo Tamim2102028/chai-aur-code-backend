@@ -10,6 +10,7 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
+// --- -- - public routes - -- --- //
 router.post(
   "/register",
   upload.fields([
@@ -18,12 +19,11 @@ router.post(
   ]),
   registerUser
 );
-
 router.post("/login", loginUser);
 
 // --- -- - secure routes - -- --- //
 router.post("/logout", verifyJWT, logoutUser);
-router.post("/refresh-token", refreshAccessToken); 
+router.post("/refresh-token", refreshAccessToken);
 // verifyJWT er kaj controller er moddhe kora hoyeche
 
 export default router;
