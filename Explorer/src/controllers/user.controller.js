@@ -279,6 +279,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
   }
 
   const avatarUploadResult = await uploadToCloudinary(localAvatarPath);
+  // todo - delete old image from cloudinary after successful upload new image
 
   if (!avatarUploadResult) {
     throw new apiError(500, "Failed to upload avatar image on Cloudinary");
