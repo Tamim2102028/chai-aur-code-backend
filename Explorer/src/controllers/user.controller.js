@@ -4,7 +4,6 @@ import User from "../models/user.model.js";
 import { uploadToCloudinary } from "../utils/cloudinary.js";
 import ApiResponse from "../utils/apiResponse.js";
 import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
 import ApiError from "../utils/apiError.js";
 
 const generateAccessAndRefreshToken = async (userId) => {
@@ -64,11 +63,11 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // 5. upload to cloudinary if image present - avatar check must
   const avatarUploadResult = await uploadToCloudinary(avatarLocalPath);
-  console.log("avatarUploadResult:", avatarUploadResult);
+  
   const coverImageUploadResult = coverImageLocalPath
     ? await uploadToCloudinary(coverImageLocalPath)
     : null;
-  console.log("coverImageUploadResult:", coverImageUploadResult);
+    
 
   if (!avatarUploadResult) {
     throw new apiError(500, "Failed to upload avatar image");
