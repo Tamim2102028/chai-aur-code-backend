@@ -57,7 +57,7 @@ userSchema.pre("save", async function (next) {
     // if password is not modified, skip hashing
     return next();
   }
-  this.password = await bcrypt.hash(this.password, 10); // 10 salt rounds
+  this.password = await bcrypt.hash(this.password, 12); // 12 salt rounds
   next();
 });
 
